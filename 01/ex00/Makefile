@@ -1,6 +1,6 @@
-NAME=
+NAME=hazard
 
-SRCS=
+SRCS=main.cpp Zombie.hpp Zombie.cpp newZombie.cpp randomChump.cpp
 OBJS=$(SRCS:.cpp=.o)
 CC=c++
 CFLAG=-Wall -Wextra -Werror -std=c++98
