@@ -67,7 +67,7 @@ const std::string &Contact::get_nick_name() const
 	return (_contact_info.nick_name);
 }
 
-long long int Contact::get_phone_number() const
+const std::string Contact::get_phone_number() const
 {
 	return (_contact_info.phone_number);
 }

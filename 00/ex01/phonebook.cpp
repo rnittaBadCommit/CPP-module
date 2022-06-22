@@ -85,6 +85,14 @@ void	PhoneBook::_show_all_contact_basic_info(const int width) const
 	}
 }
 
+bool	PhoneBook::_is_valid_phone_number(const std::string phone_number)
+{
+	for (int i = 0; i < phone_number.length(); i++)
+		if (phone_number[i] < '0' || '9' < phone_number[i])
+			return (false);
+	return (true);
+}
+
 void	PhoneBook::_command_add()
 {
 	t_contact_info new_contact_info;
@@ -95,8 +103,15 @@ void	PhoneBook::_command_add()
 	std::getline(std::cin, new_contact_info.last_name);
 	std::cout << "input nick name: ";
 	std::getline(std::cin, new_contact_info.nick_name);
-	std::cout << "input phone number: ";
-	std::getline(std::cin, new_contact_info.phone_number);
+	while (1)
+	{
+		std::cout << "input phone number: ";
+		std::getline(std::cin, new_contact_info.phone_number);
+		if (_is_valid_phone_number(new_contact_info.phone_number))
+			break;
+		else
+			std::cout << "invalid phone number: phone number must contain only number" << std::endl;
+	}
 	std::cout << "input darkest secret: ";
 	std::getline(std::cin, new_contact_info.secret_info);
 }
