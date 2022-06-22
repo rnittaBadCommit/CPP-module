@@ -37,7 +37,7 @@ void	Contact::set_nick_name(const std::string nick_name)
 	_contact_info.nick_name = nick_name;
 }
 
-void	Contact::set_phone_number(const long long int phone_number)
+void	Contact::set_phone_number(const std::string phone_number)
 {
 	_contact_info.phone_number = phone_number;
 }
