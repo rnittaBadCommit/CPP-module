@@ -23,7 +23,7 @@ class PhoneBook
 		int	_oldest_contact_index;
 		Contact _contact_arry[MAX_CONTACT_NUM];
 		const std::string command_arry[COMMAND_NUM + 1] = {"ADD", "SEARCH", "EXIT", ""};
-		bool	_is_only_number(const std::string str);
+		bool	_is_only_number(const std::string str) const;
 		bool	_is_valid_command(const std::string command) const;
 		void	_execute_command(const std::string command);
 		void	_add_new_contact(const t_contact_info contact_info);

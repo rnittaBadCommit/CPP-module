@@ -28,6 +28,16 @@ void	PhoneBook::start_shell()
 
 //private
 
+bool	PhoneBook::_is_only_number(const std::string str) const
+{
+	for (int i = 0; i < str.length(); i++)
+	{
+		if (str[i] < '0' || '9' < str[i])
+			return (false);
+	}
+	return (true);
+}
+
 bool	PhoneBook::_is_valid_command(const std::string command) const
 {
 	if (command == "")
@@ -80,22 +90,12 @@ void	PhoneBook::_show_all_contact_basic_info(const int width) const
 	for (int i = 0; i < _num_contact; i++)
 	{
 		std::cout << std::setw(10) << i << "|";
-		show_contact_basic_info(_contact_arry[contact_index % MAX_CONTACT_NUM], width);
+		_show_contact_basic_info(_contact_arry[contact_index % MAX_CONTACT_NUM], width);
 		contact_index++;
 	}
 }
 
-bool	PhoneBook::_is_only_number(const std::string str)
-{
-	for (int i = 0; i < str.length(); i++)
-	{
-		if (str[i] < '0' || '9' < str[i])
-			return (false);
-	}
-	return (true);
-}
-
-void	PhoneBook::_set_contact_info_from_cin(t_contact_info &contact_info)
+void	PhoneBook::_set_contact_info_from_cin(t_contact_info &new_contact_info)
 {
 	std::cout << "input first name: " << std::endl << "%>";
 	std::getline(std::cin, new_contact_info.first_name);
@@ -108,8 +108,6 @@ void	PhoneBook::_set_contact_info_from_cin(t_contact_info &contact_info)
 	std::cout << "input darkest secret: " << std::endl << "%>";
 	std::getline(std::cin, new_contact_info.secret_info);
 }
-
-bool	PhoneBook::
 
 bool	PhoneBook::_is_valid_and_put_error_new_contact_info(t_contact_info new_contact_info) const
 {
@@ -196,5 +194,3 @@ const std::string PhoneBook::_convert_str_to_limited_width(const std::string src
 		return (ret);
 	}	
 }
-
-
