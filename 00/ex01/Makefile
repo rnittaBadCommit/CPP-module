@@ -1,6 +1,7 @@
 NAME=contact_list_management
 
-SRCS=contact_list_management.cpp phonebook.cpp contact.cpp
+UTILS=./utils/ft_isnumber.cpp ./utils/ft_stoi.cpp
+SRCS=main.cpp phonebook.cpp contact.cpp $(UTILS)
 OBJS=$(SRCS:.cpp=.o)
 CC=c++
 CFLAG=-Wall -Wextra -Werror -std=c++98
