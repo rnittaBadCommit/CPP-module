@@ -2,7 +2,10 @@
 
 PhoneBook::PhoneBook() : _is_shell_finished(false), _num_contact(0), _oldest_contact_index(0)
 {
-
+	command_arry[0] = "ADD";
+	command_arry[1] = "SEARCH";
+	command_arry[2] = "EXIT";
+	command_arry[3] = "";
 }
 
 PhoneBook::~PhoneBook()
@@ -21,22 +24,14 @@ void	PhoneBook::start_shell()
 		if (_is_valid_command(command))
 			_execute_command(command);
 		else
-			;
+		{
+
+		}
 	}
 }
 
 
 //private
-
-bool	PhoneBook::_is_only_number(const std::string str) const
-{
-	for (int i = 0; i < str.length(); i++)
-	{
-		if (str[i] < '0' || '9' < str[i])
-			return (false);
-	}
-	return (true);
-}
 
 bool	PhoneBook::_is_valid_command(const std::string command) const
 {
@@ -79,9 +74,9 @@ void	PhoneBook::_show_contact_all_info(const int contact_index) const
 
 void	PhoneBook::_show_contact_basic_info(const Contact contact, const int width) const
 {
-	std::cout << std::setw(10) << _convert_str_to_limited_width(contact.get_first_name()) << "|";
-	std::cout << std::setw(10) << _convert_str_to_limited_width(contact.get_last_name()) << "|";
-	std::cout << std::setw(10) << _convert_str_to_limited_width(contact.get_nick_name()) << std::endl;
+	std::cout << std::setw(width) << _convert_str_to_limited_width(contact.get_first_name()) << "|";
+	std::cout << std::setw(width) << _convert_str_to_limited_width(contact.get_last_name()) << "|";
+	std::cout << std::setw(width) << _convert_str_to_limited_width(contact.get_nick_name()) << std::endl;
 }
 
 void	PhoneBook::_show_all_contact_basic_info(const int width) const
@@ -132,7 +127,7 @@ bool	PhoneBook::_is_valid_and_put_error_new_contact_info(t_contact_info new_cont
 		std::cout << "invalid phone number: phone number can't be empty" << std::endl;
 		ret = false;
 	}
-	else if (!_is_only_number(new_contact_info.phone_number))
+	else if (!is_only_number(new_contact_info.phone_number))
 	{
 		std::cout << "invalid phone number: (" << new_contact_info.phone_number << ")" << std::endl;
 		std::cout << "phone number must contain only number" << std::endl;
@@ -159,10 +154,10 @@ void	PhoneBook::_command_search()
 {
 	std::string s_index;
 
-	_show_contact_basic_info(10);
+	_show_all_contact_basic_info(10);
 	std::cout << "input the index (0 ~ " << _num_contact << ")" << std::endl << "%>";
 	std::getline(std::cin, s_index);
-	if (_is_only_number(s_index))	
+	if (is_only_number(s_index))	
 	{
 		int	i_index = std::stoi(s_index);
 		if (i_index <= _num_contact)
