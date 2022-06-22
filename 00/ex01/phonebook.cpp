@@ -85,35 +85,104 @@ void	PhoneBook::_show_all_contact_basic_info(const int width) const
 	}
 }
 
-bool	PhoneBook::_is_valid_phone_number(const std::string phone_number)
+bool	PhoneBook::_is_only_number(const std::string str)
 {
-	for (int i = 0; i < phone_number.length(); i++)
-		if (phone_number[i] < '0' || '9' < phone_number[i])
+	for (int i = 0; i < str.length(); i++)
+	{
+		if (str[i] < '0' || '9' < str[i])
 			return (false);
+	}
 	return (true);
+}
+
+void	PhoneBook::_set_contact_info_from_cin(t_contact_info &contact_info)
+{
+	std::cout << "input first name: " << std::endl << "%>";
+	std::getline(std::cin, new_contact_info.first_name);
+	std::cout << "input last name: " << std::endl << "%>";
+	std::getline(std::cin, new_contact_info.last_name);
+	std::cout << "input nick name: " << std::endl << "%>";
+	std::getline(std::cin, new_contact_info.nick_name);
+	std::cout << "input phone number: " << std::endl << "%>";
+	std::getline(std::cin, new_contact_info.phone_number);
+	std::cout << "input darkest secret: " << std::endl << "%>";
+	std::getline(std::cin, new_contact_info.secret_info);
+}
+
+bool	PhoneBook::
+
+bool	PhoneBook::_is_valid_and_put_error_new_contact_info(t_contact_info new_contact_info) const
+{
+	bool	ret = true;
+	if (new_contact_info.first_name.empty())
+	{
+		std::cout << "invalid first name: first name can't be empty" << std::endl;
+		ret = false;
+	}
+	if (new_contact_info.last_name.empty())
+	{
+		std::cout << "invalid last name: last name can't be empty" << std::endl;
+		ret = false;
+	}
+	if (new_contact_info.nick_name.empty())
+	{
+		std::cout << "invalid nick name: nick name can't be empty" << std::endl;
+		ret = false;
+	}
+	if (new_contact_info.phone_number.empty())
+	{
+		std::cout << "invalid phone number: phone number can't be empty" << std::endl;
+		ret = false;
+	}
+	else if (!_is_only_number(new_contact_info.phone_number))
+	{
+		std::cout << "invalid phone number: (" << new_contact_info.phone_number << ")" << std::endl;
+		std::cout << "phone number must contain only number" << std::endl;
+		ret = false;
+	}
+	if (new_contact_info.secret_info.empty())
+	{
+		std::cout << "invalid darkest secret: darkest secret can't be empty" << std::endl;
+		ret = false;
+	}
+	return (ret);
 }
 
 void	PhoneBook::_command_add()
 {
 	t_contact_info new_contact_info;
 
-	std::cout << "input first name: ";
-	std::getline(std::cin, new_contact_info.first_name);
-	std::cout << "input last name: ";
-	std::getline(std::cin, new_contact_info.last_name);
-	std::cout << "input nick name: ";
-	std::getline(std::cin, new_contact_info.nick_name);
-	while (1)
+	_set_contact_info_from_cin(new_contact_info);
+	if (_is_valid_and_put_error_new_contact_info(new_contact_info))
+		_add_new_contact(new_contact_info);
+}
+
+void	PhoneBook::_command_search()
+{
+	std::string s_index;
+
+	_show_contact_basic_info(10);
+	std::cout << "input the index (0 ~ " << _num_contact << ")" << std::endl << "%>";
+	std::getline(std::cin, s_index);
+	if (_is_only_number(s_index))	
 	{
-		std::cout << "input phone number: ";
-		std::getline(std::cin, new_contact_info.phone_number);
-		if (_is_valid_phone_number(new_contact_info.phone_number))
-			break;
+		int	i_index = std::stoi(s_index);
+		if (i_index <= _num_contact)
+			_contact_arry[i_index].show_contact_info();
 		else
-			std::cout << "invalid phone number: phone number must contain only number" << std::endl;
+			std::cout << "invalid index: index need to be 0 ~ " << _num_contact << std::endl;
+
+
 	}
-	std::cout << "input darkest secret: ";
-	std::getline(std::cin, new_contact_info.secret_info);
+	else
+	{
+		std::cout << "invalid index: index must contain only number" << std::endl;
+	}
+}
+
+void	PhoneBook::_command_exit()
+{
+	_is_shell_finished = true;
 }
 
 const std::string PhoneBook::_convert_str_to_limited_width(const std::string src) const
@@ -127,4 +196,5 @@ const std::string PhoneBook::_convert_str_to_limited_width(const std::string src
 		return (ret);
 	}	
 }
+
 
