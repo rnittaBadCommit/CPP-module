@@ -5,7 +5,7 @@
 #include <iomanip>
 #include <string>
 #include "contact.hpp"
-#include "ft_utils.hpp"
+#include "./utils/ft_utils.hpp"
 
 #define MAX_CONTACT_NUM 8
 #define COLUMN_WIDTH 10
