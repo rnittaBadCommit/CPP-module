@@ -7,4 +7,4 @@
 int	ft_stoi(std::string str);
 bool	is_only_number(const std::string str);
 
-#endif;
+#endif
