@@ -18,7 +18,6 @@ class PhoneBook
 		void	show_contact_all_info(const int contact_index) const;
 		void	show_contact_basic_info(const Contact contact, const int width) const;
 		void	show_all_contact_basic_info(const int width) const;
-		int		execute_command(const std::string command);
 		bool	is_valid_command(const std::string command) const;
 
 	private:
@@ -29,7 +28,6 @@ class PhoneBook
 
 		const std::string _convert_str_to_limited_width(const std::string src) const;
 		bool	is_valid_command(const std::string command) const;
-
 };
 
 #endif

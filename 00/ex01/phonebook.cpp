@@ -47,12 +47,6 @@ void	PhoneBook::show_all_contact_basic_info(const int width) const
 	}
 }
 
-// int	PhoneBook::execute_command(const std::string command)
-// {
-// 	if (_is_valid_command(command))
-// }
-
-
 //private
 
 const std::string PhoneBook::_convert_str_to_limited_width(const std::string src) const
