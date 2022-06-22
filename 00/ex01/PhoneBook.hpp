@@ -15,7 +15,7 @@ class PhoneBook
 {
 	public:
 		PhoneBook();
-		~PhoneBook();
+		virtual	~PhoneBook();
 		void	start_shell();
 
 	private:
