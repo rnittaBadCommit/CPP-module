@@ -29,18 +29,6 @@ void	PhoneBook::show_contact_all_info(const int contact_index) const
 	_contact_arry[(_oldest_contact_index + contact_index) % 8].show_contact_info();
 }
 
-const std::string PhoneBook::_convert_str_to_limited_width(const std::string src) const
-{
-	if (src.length() <= COLUMN_WIDTH)
-		return (src);
-	else
-	{
-		std::string ret = src;
-		ret.replace(9, ret.length() - COLUMN_WIDTH + 1, ".");
-		return (ret);
-	}	
-}
-
 void	PhoneBook::show_contact_basic_info(const Contact contact, const int width) const
 {
 	std::cout << std::setw(10) << _convert_str_to_limited_width(contact.get_first_name()) << "|";
@@ -57,4 +45,34 @@ void	PhoneBook::show_all_contact_basic_info(const int width) const
 		show_contact_basic_info(_contact_arry[contact_index % MAX_CONTACT_NUM], width);
 		contact_index++;
 	}
+}
+
+// int	PhoneBook::execute_command(const std::string command)
+// {
+// 	if (_is_valid_command(command))
+// }
+
+
+//private
+
+const std::string PhoneBook::_convert_str_to_limited_width(const std::string src) const
+{
+	if (src.length() <= COLUMN_WIDTH)
+		return (src);
+	else
+	{
+		std::string ret = src;
+		ret.replace(9, ret.length() - COLUMN_WIDTH + 1, ".");
+		return (ret);
+	}	
+}
+
+bool	PhoneBook::_is_valid_command(const std::string command) const
+{
+	if (command == "")
+		return (false);
+	for (int i = 0; !command_arry[i].empty(); i++)
+		if (command_arry[i] == command)
+			return (true);
+	return (false);
 }
