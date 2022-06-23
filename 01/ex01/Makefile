@@ -1,9 +1,9 @@
 NAME=hazard
 
-SRCS=main.cpp Zombie.hpp Zombie.cpp zombieHorde.cpp
+SRCS=main.cpp Zombie.cpp zombieHorde.cpp
 OBJS=$(SRCS:.cpp=.o)
 CC=c++
-CFLAG=-Wall -Wextra -Werror -std=c++98
+CFLAG=-g -Wall -Wextra -Werror -std=c++98
 
 .cpp.o:
 	$(CC) $(CFLAG) -c $< -o $@
