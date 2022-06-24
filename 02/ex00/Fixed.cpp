@@ -20,3 +20,13 @@ Fixed& Fixed::operator=(const Fixed &other)
 	this->value_ = other.value_;
 	return (*this);
 }
+
+int	Fixed::getRawBits(void) const
+{
+
+}
+
+void	Fixed::setRawBits(int const raw)
+{
+
+}
