@@ -2,22 +2,24 @@ NAME=ptr_ref
 
 SRCS=main.cpp
 OBJS=$(SRCS:.cpp=.o)
-CC=c++
-CFLAG=-Wall -Wextra -Werror -std=c++98
+CXX=c++
+CXXFLAG=-Wall -Wextra -Werror -std=c++98 -pedantic -MMD
 
 .cpp.o:
-	$(CC) $(CFLAG) -c $< -o $@
+	$(CXX) $(CXXFLAG) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAG) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAG) $(OBJS) -o $(NAME)
 
 clean:
-	rm -rf $(OBJS)
+	$(RM)  $(OBJS)
 
 fclean: clean
-	rm -rf $(NAME)
+	$(RM)  $(NAME)
 
 re: fclean $(NAME)
+
+-include $(DEPS)
 
 .PHONY: clean fclean re
 
