@@ -3,6 +3,12 @@
 
 # include <iostream>
 
+# define NUM_LEVEL 4
+# define DEBUG_NAME "DEBUG"
+# define INFO_NAME "INFO"
+# define WARNING_NAME "WARNING"
+# define ERROR_NAME "ERROR"
+
 class Harl
 {
 	public:
@@ -15,6 +21,9 @@ class Harl
 		void	info(void);
 		void	warning(void);
 		void	error(void);
+
+		std::string	level_ary[NUM_LEVEL];
+		void	(Harl::*complain_arry[NUM_LEVEL])(void);
 };
 
 #endif

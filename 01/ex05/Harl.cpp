@@ -2,7 +2,14 @@
 
 Harl::Harl()
 {
-
+	level_ary[0] = DEBUG_NAME;
+	level_ary[1] = INFO_NAME;
+	level_ary[2] = WARNING_NAME;
+	level_ary[3] = ERROR_NAME;
+	complain_arry[0] = &Harl::debug;
+	complain_arry[1] = &Harl::info;
+	complain_arry[2] = &Harl::warning;
+	complain_arry[3] = &Harl::error;
 }
 
 Harl::~Harl()
@@ -12,7 +19,12 @@ Harl::~Harl()
 
 void	Harl::complain(std::string level)
 {
-
+	for (int i = 0; i < NUM_LEVEL; i++)
+		if (level == level_ary[i])
+		{
+			(this->*complain_arry[i])();
+			break ;
+		}
 }
 
 void	Harl::debug(void)

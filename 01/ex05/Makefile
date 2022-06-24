@@ -1,6 +1,6 @@
-NAME=
+NAME=harl
 
-SRCS=
+SRCS=main.cpp Harl.cpp
 OBJS=$(SRCS:.cpp=.o)
 CXX=c++
 CXXFLAG=-Wall -Wextra -Werror -std=c++98 -pedantic -MMD
