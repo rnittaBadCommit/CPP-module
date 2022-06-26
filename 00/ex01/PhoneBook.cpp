@@ -61,7 +61,6 @@ void	PhoneBook::_execute_command(const std::string command)
 
 void	PhoneBook::_add_new_contact(const t_contact_info contact_info)
 {
-	std::cout << _num_contact << std::endl;
 	if (_num_contact < MAX_CONTACT_NUM)
 	{
 		_contact_arry[_num_contact].set_contact_info(contact_info);
@@ -173,10 +172,10 @@ void	PhoneBook::_command_search()
 	_show_all_contact_basic_info(10);
 	std::cout << "SEARCH> input the index (0 ~ " << _num_contact - 1 << ")" << std::endl << "SEARCH> ";
 	std::getline(std::cin, s_index);
-	if (is_only_number(s_index))	
+	if (is_only_number(s_index))
 	{
 		int	i_index = ft_stoi(s_index);
-		if (i_index <= _num_contact)
+		if (i_index < _num_contact)
 			_contact_arry[(_oldest_contact_index + i_index) % MAX_CONTACT_NUM].show_contact_info();
 		else
 			std::cout << "invalid index: index need to be 0 ~ " << _num_contact - 1<< std::endl;

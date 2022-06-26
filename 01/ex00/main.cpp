@@ -4,7 +4,7 @@ int main()
 {
 	Zombie *zombie1 = newZombie("Zombie1");
 	Zombie *zombie2 = newZombie("Zombie2");
-	Zombie *zombie3 = newZombie("Zombie3"); 
+	Zombie *zombie3 = newZombie("Zombie3");
 
 	std::cout << std::endl;
 
