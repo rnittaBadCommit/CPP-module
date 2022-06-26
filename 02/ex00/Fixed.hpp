@@ -15,7 +15,7 @@ class Fixed
 
 	private:
 		int	value_;
-		static const int num_fractional_bit_ = 1;
+		static const int fractional_bit_ = 8;
 };
 
 #endif
