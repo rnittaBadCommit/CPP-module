@@ -7,7 +7,7 @@ Fixed::Fixed() : raw_bits_(0)
 
 }
 
-Fixed::Fixed(const Fixed &other) : raw_bits_(0)
+Fixed::Fixed(const Fixed &other)
 {
 	*this = other;
 }
