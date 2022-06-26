@@ -35,7 +35,15 @@ ClapTrap::ClapTrap(std::string name) : name_(name), hp_(10), energy_(10), attack
 //mandatory in subject
 void	ClapTrap::attack(const std::string& target)
 {
-	std::cout << "ClapTrap " << name_ << " attacks " << target << ", causing " << attack_damage_ << " points of damage!" << std::endl;
+	if (energy_ >= energy_per_attack_)
+	{
+		energy_ -= energy_per_attack_;
+		std::cout << "ClapTrap " << name_ << " attacks " << target << ", causing " << attack_damage_ << " points of damage!" << std::endl;
+	}
+	else
+	{
+		std::cout << "ClapTrap " << name_ << " doesn't have enough energy" << std::endl;
+	}
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
@@ -50,7 +58,15 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	hp_ += amount;
+	if (energy_ >= energy_per_repair_)
+	{
+		hp_ += amount;
+		energy_ -= energy_per_repair_;
 
-	std::cout << "ClapTrap " << name_ << " is repaired " << amount << " points, now, " << name_ << " has " << hp_ << " hit points" << std::endl;
+		std::cout << "ClapTrap " << name_ << " is repaired " << amount << " points, now, " << name_ << " has " << hp_ << " hit points" << std::endl;
+	}
+	else
+	{
+		std::cout << "ClapTrap " << name_ << " doesn't have enough energy" << std::endl;
+	}
 }
