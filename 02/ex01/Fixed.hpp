@@ -20,7 +20,7 @@ class Fixed
 		int		toInt(void) const;
 
 	private:
-		int	value_;
+		int	raw_bits_;
 		static const int fractional_bit_ = 8;
 };
 
