@@ -5,6 +5,10 @@
 # include <fstream>
 # include <limits.h>
 
+
+# define INVALID false
+# define VALID true
+
 typedef int t_err;
 
 enum e_err

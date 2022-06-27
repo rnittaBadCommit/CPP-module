@@ -5,9 +5,6 @@
 # include <fstream>
 # include "./utils/ft_utils.hpp"
 
-# define INVALID false
-# define VALID true
-
 enum
 {
 	EMPTY_SRC_VALUE = ERR_LAST
