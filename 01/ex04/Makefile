@@ -31,14 +31,14 @@ test: $(NAME)
 	echo "abc aabc aaabc aaaabc" > $(TEST_FILE)
 	./$(NAME) $(TEST_FILE) "aa" "00"
 	cat $(TEST_FILE).replace
-	echo
+	@echo
 	./$(NAME) $(TEST_FILE) "aa" ""
 	cat $(TEST_FILE).replace
-	echo
+	@echo
 	./$(NAME) $(TEST_FILE) "aa" "012345"
 	cat $(TEST_FILE).replace
-	echo
-	echo "\n\n====Error case====\n"
+	@echo
+	@echo "\n\n====Error case====\n"
 	./$(NAME) "" aa 00 $(IGNORE_EXIT_STATUS)
 	./$(NAME) "invalid_file_name" aa 00 $(IGNORE_EXIT_STATUS)
 	./$(NAME) $(TEST_FILE) "" 00 $(IGNORE_EXIT_STATUS)
