@@ -22,8 +22,8 @@ class Harl
 		void	warning(void);
 		void	error(void);
 
-		std::string	level_ary[NUM_LEVEL];
-		void	(Harl::*complain_arry[NUM_LEVEL])(void);
+		std::string	level_ary_[NUM_LEVEL];
+		void	(Harl::*complain_arry_[NUM_LEVEL])(void);
 };
 
 #endif
