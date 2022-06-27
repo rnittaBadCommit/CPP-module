@@ -2,6 +2,7 @@ NAME=hazard
 
 SRCS=main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 OBJS=$(SRCS:.cpp=.o)
+DEPS=$(SRCS:.cpp=.d)
 CXX=c++
 CXXFLAG=-Wall -Wextra -Werror -std=c++98 -pedantic -MMD
 
@@ -13,6 +14,7 @@ $(NAME): $(OBJS)
 
 clean:
 	$(RM)  $(OBJS)
+	$(RM) $(DEPS)
 
 fclean: clean
 	$(RM)  $(NAME)

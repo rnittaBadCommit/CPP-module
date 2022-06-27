@@ -6,7 +6,8 @@
 class HumanA
 {
 	public:
-		HumanA(std::string name, Weapon weapon);
+		HumanA(std::string name, Weapon &weapon);
+		// HumanA(char *name, Weapon &weapon);
 		virtual	~HumanA();
 		void	attack() const;
 

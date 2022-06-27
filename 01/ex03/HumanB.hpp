@@ -10,6 +10,7 @@ class HumanB
 		HumanB(std::string name, Weapon *weapon);
 		virtual	~HumanB();
 		void	attack() const;
+		void	setWeapon(Weapon &weapon);
 
 	private:
 		Weapon	*_weapon;

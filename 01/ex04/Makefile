@@ -21,6 +21,7 @@ clean:
 
 fclean: clean
 	$(RM)  $(NAME)
+	$(RM) $(TEST_FILE) $(TEST_FILE).replace
 
 re: fclean $(NAME)
 
