@@ -24,4 +24,3 @@ re: fclean $(NAME)
 -include $(DEPS)
 
 .PHONY: clean fclean re
-
