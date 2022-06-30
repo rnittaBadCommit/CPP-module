@@ -60,5 +60,11 @@ int main()
 		cat1.showIdea(0);
 	}
 
+	
+	{
+		// Animal animal;
+	}
+
+
 	return (0);
 }
