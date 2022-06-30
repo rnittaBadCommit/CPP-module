@@ -27,7 +27,7 @@ Animal	&Animal::operator=(const Animal &other)
 //other structors
 Animal::Animal(const std::string type) : type_(type)
 {
-	
+	std::cout << "[Animal] Constructor(set type) called" << std::endl;
 }
 
 const std::string	&Animal::getType() const
