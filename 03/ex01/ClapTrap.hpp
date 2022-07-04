@@ -13,7 +13,8 @@ class ClapTrap
 		ClapTrap	&operator=(const ClapTrap &other);
 
 		//additional constructor
-		ClapTrap(std::string name);
+		ClapTrap(const std::string name);
+		ClapTrap(const std::string name, const unsigned int hp_, const unsigned int energy, const unsigned int attack_damage);
 
 		//mandatory in subject
 		void	attack(const std::string& target);
