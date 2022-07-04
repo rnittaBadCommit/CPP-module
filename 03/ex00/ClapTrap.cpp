@@ -2,7 +2,7 @@
 
 
 //canonical
-ClapTrap::ClapTrap() : name_(""), hp_(10), energy_(10), attack_damage_(0)
+ClapTrap::ClapTrap() :ClapTrap("")
 {
 	std::cout << "Default constructor called" << std::endl;
 }
@@ -53,7 +53,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	else
 		hp_ = 0;
 
-	std::cout << "ClapTrap " << name_ << " takes " << amount << " damage... now, " << name_ << " has " << hp_ << " hit points" << std::endl;
+	std::cout << "ClapTrap " << name_ << " takes " << amount << " damage..." << std::endl << "now, " << name_ << " has " << hp_ << " hit points" << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)

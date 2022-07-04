@@ -1,7 +1,9 @@
 #ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
 
-class ScavTrap
+# include "ClapTrap.hpp"
+
+class ScavTrap : public ClapTrap
 {
 	public:
 		//canonical
@@ -9,6 +11,9 @@ class ScavTrap
 		ScavTrap(const ScavTrap &other);
 		virtual ~ScavTrap();
 		ScavTrap	&operator=(const ScavTrap &other);
+
+		//another constructor
+		ScavTrap(const std::string name);
 
 	private:
 
