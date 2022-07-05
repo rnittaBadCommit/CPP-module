@@ -52,8 +52,3 @@ void	ScavTrap::guardGate() const
 {
 	std::cout << "[ScavTrap] " << ClapTrap::getName() << " is now in Gatekeeper mode" << std::endl;
 }
-
-
-
-
-
