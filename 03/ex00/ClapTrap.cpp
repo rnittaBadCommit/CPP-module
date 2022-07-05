@@ -2,7 +2,7 @@
 
 
 //canonical
-ClapTrap::ClapTrap() :ClapTrap("ClapTrap")
+ClapTrap::ClapTrap() : name_("ClapTrap"), hp_(10), energy_(10), attack_damage_(0)
 {
 	std::cout << "[ClapTrap] Default constructor called" << std::endl;
 }
