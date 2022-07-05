@@ -50,6 +50,11 @@ bool	Fixed::operator>=(const Fixed &other) const
 	return (raw_bits_ >= other.getRawBits());
 }
 
+bool	Fixed::operator<=(const Fixed &other) const
+{
+	return (raw_bits_ <= other.getRawBits());
+}
+
 bool	Fixed::operator==(const Fixed &other) const
 {
 	return (raw_bits_ == other.getRawBits());
