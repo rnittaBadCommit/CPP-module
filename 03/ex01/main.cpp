@@ -1,13 +1,17 @@
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main()
 {
-	ClapTrap clapTrap1("trap 1");
+	// ClapTrap claptrap("trap 1");
 
-	clapTrap1.attack("someone");
-	clapTrap1.takeDamage(8);
-	clapTrap1.beRepaired(10);
+	ScavTrap scavtrap;
 
-	clapTrap1.takeDamage(100);
-	clapTrap1.beRepaired(1);
+	scavtrap.attack("target1");
+	scavtrap.guardGate();
+
+	std::cout << std::endl;
+	
+	ScavTrap scavtrap2("scavtrap2");
+	scavtrap2.attack("target1");
+	scavtrap2.guardGate();
 }

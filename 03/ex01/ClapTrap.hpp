@@ -17,9 +17,9 @@ class ClapTrap
 		ClapTrap(const std::string name, const unsigned int hp_, const unsigned int energy, const unsigned int attack_damage);
 
 		//mandatory in subject
-		void	attack(const std::string& target);
-		void	takeDamage(unsigned int amount);
-		void	beRepaired(unsigned int amount);
+		virtual void	attack(const std::string& target) = 0;
+				void	takeDamage(unsigned int amount);
+				void	beRepaired(unsigned int amount);
 
 		//getter & setter
 		const std::string	&getName() const;

@@ -2,7 +2,7 @@
 
 
 //canonical
-ClapTrap::ClapTrap() :ClapTrap("ClapTrap")
+ClapTrap::ClapTrap() : name_("ClapTrap"), hp_(10), energy_(10), attack_damage_(0)
 {
 	std::cout << "[ClapTrap] Default constructor called" << std::endl;
 }
@@ -41,18 +41,18 @@ ClapTrap::ClapTrap(const std::string name, const unsigned int hp, const unsigned
 
 
 //mandatory in subject
-void	ClapTrap::attack(const std::string& target)
-{
-	if (energy_ >= energy_per_attack_)
-	{
-		energy_ -= energy_per_attack_;
-		std::cout << "[ClapTrap]" << name_ << " attacks " << target << ", causing " << attack_damage_ << " points of damage!" << std::endl;
-	}
-	else
-	{
-		std::cout << "[ClapTrap]" << name_ << " doesn't have enough energy" << std::endl;
-	}
-}
+// void	ClapTrap::attack(const std::string& target)
+// {
+// 	if (energy_ >= energy_per_attack_)
+// 	{
+// 		energy_ -= energy_per_attack_;
+// 		std::cout << "[ClapTrap]" << name_ << " attacks " << target << ", causing " << attack_damage_ << " points of damage!" << std::endl;
+// 	}
+// 	else
+// 	{
+// 		std::cout << "[ClapTrap]" << name_ << " doesn't have enough energy" << std::endl;
+// 	}
+// }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
