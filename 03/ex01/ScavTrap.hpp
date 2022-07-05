@@ -15,6 +15,10 @@ class ScavTrap : public ClapTrap
 		//another constructor
 		ScavTrap(const std::string name);
 
+		//move
+		void	attack(const std::string& target);
+		void	guardGate();
+
 	private:
 
 };

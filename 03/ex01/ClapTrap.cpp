@@ -46,11 +46,11 @@ void	ClapTrap::attack(const std::string& target)
 	if (energy_ >= energy_per_attack_)
 	{
 		energy_ -= energy_per_attack_;
-		std::cout << name_ << " attacks " << target << ", causing " << attack_damage_ << " points of damage!" << std::endl;
+		std::cout << "[ClapTrap]" << name_ << " attacks " << target << ", causing " << attack_damage_ << " points of damage!" << std::endl;
 	}
 	else
 	{
-		std::cout << name_ << " doesn't have enough energy" << std::endl;
+		std::cout << "[ClapTrap]" << name_ << " doesn't have enough energy" << std::endl;
 	}
 }
 
@@ -78,3 +78,45 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		std::cout << name_ << " doesn't have enough energy" << std::endl;
 	}
 }
+
+
+//getter & setter
+const std::string	&ClapTrap::getName() const
+{
+	return (name_);
+}
+
+unsigned int	ClapTrap::getHp() const
+{
+	return (hp_);
+}
+
+unsigned int	ClapTrap::getEnergy() const
+{
+	return (energy_);
+}
+
+unsigned int	ClapTrap::getAttackDamage() const
+{
+	return (attack_damage_);
+}
+
+void	ClapTrap::setName(const std::string name)
+{
+	name_ = name;
+}
+
+void	ClapTrap::setHp(const unsigned int hp)
+{
+	hp_ = hp;
+}
+void	ClapTrap::setEnergy(const unsigned int energy)
+{
+	energy_ = energy;
+}
+void	ClapTrap::setAttackDamage(const unsigned int damage)
+{
+	attack_damage_ = damage;
+}
+
+
