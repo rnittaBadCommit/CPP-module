@@ -8,6 +8,11 @@ int main()
 
 	scavtrap.attack("target1");
 	scavtrap.guardGate();
+	scavtrap.takeDamage(8);
+	scavtrap.beRepaired(10);
+
+	scavtrap.takeDamage(100);
+	scavtrap.beRepaired(1);
 
 	std::cout << std::endl;
 	
