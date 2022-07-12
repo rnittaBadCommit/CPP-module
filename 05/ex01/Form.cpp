@@ -2,7 +2,7 @@
 
 //canonical
 
-Form::Form() : name_(""), is_signed_(false), grade_sign_(lowest_grade), grade_exe_(lowest_grade)
+Form::Form() : name_("form"), is_signed_(false), grade_sign_(highest_grade), grade_exe_(highest_grade)
 {
 
 }
@@ -19,8 +19,9 @@ Form::~Form()
 
 Form	&Form::operator=(const Form &other)
 {
-	is_signed_ = other.is_signed_;
-
+	//is_signed_ = other.is_signed_;
+	//do nothing
+	(void)other;
 	return (*this);
 }
 
@@ -31,7 +32,7 @@ Form::Form(const std::string name, const int grade_sign, const int grade_exe) : 
 	check_range_all_grades();
 }
 
-Form::Form(const std::string name) : name_(name), is_signed_(false), grade_sign_(lowest_grade), grade_exe_(lowest_grade)
+Form::Form(const std::string name) : name_(name), is_signed_(false), grade_sign_(highest_grade), grade_exe_(highest_grade)
 {
 
 }
@@ -97,8 +98,8 @@ const char	*Form::GradeTooLowException::what() const throw()
 //stream operators
 std::ostream	&operator<<(std::ostream &stream, const Form &object)
 {
-	stream << object.getName() << " is signed: " << object.getIsSigned() 
+	stream << object.getName() << ", is signed: " << object.getIsSigned() 
 		<< " grade to sign: " << object.getGradeSign()
-		<< " grade to execute" << object.getGradeExe();
+		<< " grade to execute " << object.getGradeExe();
 	return (stream);
 }
