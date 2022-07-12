@@ -2,7 +2,7 @@
 
 //canonical
 
-Bureaucrat::Bureaucrat() : name_(""), grade_(lowest_grade)
+Bureaucrat::Bureaucrat() : name_("Bureaucrat"), grade_(lowest_grade)
 {
 
 }
@@ -21,7 +21,6 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &other)
 {
 	Bureaucrat(other.name_);
 	grade_ = other.grade_;
-
 	return (*this);
 }
 
@@ -76,6 +75,18 @@ void	Bureaucrat::decrementGrade()
 		throw GradeTooLowException();
 }
 
+void	Bureaucrat::signForm(Form &form)
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << *this << " signed " << form << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << *this << " couldn't sign " << form << " because " << e.what() << std::endl;
+	}
+}
 
 
 const char	*Bureaucrat::GradeTooHighException::what() const throw()
@@ -92,5 +103,7 @@ const char	*Bureaucrat::GradeTooLowException::what() const throw()
 //stream operators
 std::ostream	&operator<<(std::ostream &stream, const Bureaucrat &object)
 {
-	stream << object.getName() << " " << object.getGrade();
+	stream << object.getName() << ", bureaucrat grade " << object.getGrade();
+	return (stream);
 }
+

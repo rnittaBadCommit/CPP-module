@@ -6,6 +6,8 @@
 
 # include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class	Form
 {
 	public:
@@ -20,7 +22,7 @@ class	Form
 		Form		&operator=(const Form &other);
 		
 		//other constructors
-		Form(const std::string name, const int grade, const int grade_sign, const int grade_exe);
+		Form(const std::string name, const int grade_sign, const int grade_exe);
 		Form(const std::string name);
 
 
@@ -30,7 +32,6 @@ class	Form
 
 		//getter & setter
 		const std::string	&getName() const;
-		int					getGrade() const;
 		bool				getIsSigned() const;
 		int					getGradeSign() const;
 		int					getGradeExe() const;
@@ -41,7 +42,6 @@ class	Form
 		void	check_range_grade_(const int grade);
 
 		const std::string	name_;
-		int					grade_;
 		bool				is_signed_;
 		const int			grade_sign_;
 		const int			grade_exe_;

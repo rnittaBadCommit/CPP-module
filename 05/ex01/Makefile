@@ -1,10 +1,10 @@
-NAME=
+NAME=form
 
-SRCS=
+SRCS=main.cpp Bureaucrat.cpp Form.cpp
 OBJS=$(SRCS:.cpp=.o)
 DEPS=$(SRCS:.cpp=.d)
 CXX=c++
-CXXFLAG=-Wall -Wextra -Werror -std=c++98 -pedantic -MMD
+CXXFLAG=-g -Wall -Wextra -Werror -std=c++98 -pedantic -MMD
 
 .cpp.o:
 	$(CXX) $(CXXFLAG) -c $< -o $@
