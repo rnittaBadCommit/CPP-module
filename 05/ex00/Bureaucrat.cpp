@@ -2,7 +2,7 @@
 
 //canonical
 
-Bureaucrat::Bureaucrat() : name_(""), grade_(lowest_grade)
+Bureaucrat::Bureaucrat() : name_("Bureaucrat"), grade_(lowest_grade)
 {
 
 }
@@ -91,5 +91,7 @@ const char	*Bureaucrat::GradeTooLowException::what() const throw()
 //stream operators
 std::ostream	&operator<<(std::ostream &stream, const Bureaucrat &object)
 {
-	stream << object.getName() << " " << object.getGrade();
+	stream << object.getName() << ", bureaucrat grade " << object.getGrade();
+	return (stream);
 }
+
