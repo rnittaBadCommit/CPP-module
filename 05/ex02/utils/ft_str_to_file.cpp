@@ -18,15 +18,15 @@ namespace ft
 		}
 	}
 
-	int	str_to_file(std::string file_name, std::string content)
+	void	str_to_file(std::string file_name, std::string content)
 	{
 		std::ofstream ofs(file_name.c_str());
 		if (ofs.fail())
-			return (CANT_OPEN_FILE);
+			throw Exception(CANT_OPEN_FILE);
 		else
 		{
-			std::cout << content;
-			return (NO_ERR);
+			ofs << content;
+			ofs.close();
 		}
 	}
 }

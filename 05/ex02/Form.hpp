@@ -43,7 +43,7 @@ class	Form
 	private:
 		void	check_range_all_grades();
 		void	check_range_grade_(const int grade);
-		virtual void	execute_process(const Bureaucrat executor) const = 0;
+		virtual void	execute_process() const = 0;
 
 		const std::string	name_;
 		bool				is_signed_;
@@ -62,8 +62,7 @@ class	Form
 		class	NotSignedException : public std::exception
 		{
 			virtual const char *what() const throw();
-		}
-
+		};
 };
 
 // stream operators

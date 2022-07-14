@@ -28,13 +28,18 @@ namespace ft
 
 	//file
 	std::string	file_to_str(std::string file_name, t_err *err);
-	int	str_to_file(std::string file_name, std::string content, t_err *err);
-	int	str_to_file(std::string file_name, std::string content);
+	int		str_to_file(std::string file_name, std::string content, t_err *err);
+	void	str_to_file(std::string file_name, std::string content);
 
 	class Exception : public std::exception
 	{
-		virtual const char *what(e_err err) const throw();
-		virtual const char *what() const throw();
+		public:
+			Exception(e_err err);
+			const char *what() const throw();
+			e_err	getErr() const;
+
+		private:
+			e_err err_;
 	};
 }
 

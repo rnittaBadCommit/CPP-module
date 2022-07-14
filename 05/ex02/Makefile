@@ -1,6 +1,7 @@
 NAME=form
 
-SRCS=main.cpp Bureaucrat.cpp Form.cpp
+UTILS=./utils/ft_str_to_file.cpp ./utils/ft_Exception.cpp
+SRCS=main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp $(UTILS)
 OBJS=$(SRCS:.cpp=.o)
 DEPS=$(SRCS:.cpp=.d)
 CXX=c++

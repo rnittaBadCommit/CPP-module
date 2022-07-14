@@ -5,6 +5,7 @@
 # include <exception>
 
 # include "Form.hpp"
+# include "utils/ft_utils.hpp"
 
 class Form;
 
@@ -28,6 +29,7 @@ class	Bureaucrat
 		void	incrementGrade();
 		void	decrementGrade();
 		void	signForm(Form &form);
+		void	executeForm(Form const & form);
 
 		//getter & setter
 		const std::string	&getName() const;

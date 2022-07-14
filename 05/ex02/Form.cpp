@@ -61,7 +61,11 @@ void	Form::execute(Bureaucrat const & executor) const
 	{
 		try
 		{
-			execute_process(executor);
+			execute_process();
+		}
+		catch (const ft::Exception &e)
+		{
+			throw e;
 		}
 		catch (const std::exception &e)
 		{

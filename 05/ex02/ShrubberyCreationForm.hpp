@@ -10,7 +10,7 @@ class ShrubberyCreationForm : public Form
 		//statics
 		static const int	required_grade_to_sign = 145;
 		static const int	required_grade_to_exec = 137;
-		static constexpr const char const		*suffix_file_name  = "_shrubbery";
+		static const char * const suffix_file_name;
 
 		//canonical
 					ShrubberyCreationForm();
@@ -18,8 +18,11 @@ class ShrubberyCreationForm : public Form
 		virtual		~ShrubberyCreationForm();
 		ShrubberyCreationForm	&operator=(const ShrubberyCreationForm &other);
 
+		//other constructors
+		ShrubberyCreationForm(const std::string name, const std::string target);
+
 	private:
-		void	execute_process(const Bureaucrat executor) const;
+		void	execute_process() const;
 
 };
 
