@@ -1,21 +1,25 @@
 #include "ft_utils.hpp"
 
-std::string	file_to_str(std::string file_name, t_err *err)
+namespace ft
 {
-	std::string ret;
-	if (file_name.empty())
+	std::string	file_to_str(std::string file_name, t_err *err)
 	{
-		*err = EMPTY_FILE_NAME;
+		std::string ret;
+		if (file_name.empty())
+		{
+			*err = EMPTY_FILE_NAME;
+			return (ret);
+		}
+		std::ifstream ifs(file_name.c_str());
+		if (ifs.fail())
+		{
+			*err = CANT_OPEN_FILE;
+			return (ret);
+		}
+		std::istreambuf_iterator<char> it(ifs);
+		std::istreambuf_iterator<char> last;
+		ret = std::string(it, last);
+		ifs.close();
 		return (ret);
 	}
-	std::ifstream ifs(file_name);
-	if (ifs.fail())
-    {
-        *err = CANT_OPEN_FILE;
-        return (ret);
-    }
-    std::istreambuf_iterator<char> it(ifs);
-    std::istreambuf_iterator<char> last;
-    std::string str(it, last);
-	return (ret);
 }
