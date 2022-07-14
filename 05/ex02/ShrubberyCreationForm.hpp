@@ -23,7 +23,6 @@ class ShrubberyCreationForm : public Form
 
 	private:
 		void	execute_process() const;
-
 };
 
 #endif
