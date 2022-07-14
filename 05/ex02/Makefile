@@ -30,7 +30,7 @@ test: fclean set_test $(NAME)
 	@echo "TEST START"
 	@echo
 	@echo
-	@./$(NAME)
+	@valgrind ./$(NAME)
 
 set_test:
 	$(eval TEST := 1)
