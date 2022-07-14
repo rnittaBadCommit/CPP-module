@@ -9,11 +9,6 @@ ft::Exception::Exception(e_err err) : err_(err)
 
 }
 
-e_err	ft::Exception::getErr() const
-{
-	return (err_);
-}
-
 const char *ft::Exception::what() const throw()
 {
 	if (err_ == INVALID_NUM_ARG)

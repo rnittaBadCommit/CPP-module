@@ -34,12 +34,11 @@ namespace ft
 	class Exception : public std::exception
 	{
 		public:
-			Exception(e_err err);
+			Exception(const e_err err);
 			const char *what() const throw();
-			e_err	getErr() const;
 
 		private:
-			e_err err_;
+			e_err	err_;
 	};
 }
 
