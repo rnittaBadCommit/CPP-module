@@ -22,6 +22,7 @@ class	Form
 		Form		&operator=(const Form &other);
 		
 		//other constructors
+		Form(const std::string name, const int grade_sign, const int grade_exe, const std::string target);
 		Form(const std::string name, const int grade_sign, const int grade_exe);
 		Form(const std::string name);
 
@@ -36,17 +37,19 @@ class	Form
 		bool				getIsSigned() const;
 		int					getGradeSign() const;
 		int					getGradeExe() const;
+		const std::string	&getTarget() const;
 
 
 	private:
 		void	check_range_all_grades();
 		void	check_range_grade_(const int grade);
-		virtual void	execute_process() const = 0;
+		virtual void	execute_process(const Bureaucrat executor) const = 0;
 
 		const std::string	name_;
 		bool				is_signed_;
 		const int			grade_sign_;
 		const int			grade_exe_;
+		const std::string	target_;
 
 		class	GradeTooHighException : public std::exception
 		{
@@ -56,6 +59,10 @@ class	Form
 		{
 			virtual const char *what() const throw();
 		};
+		class	NotSignedException : public std::exception
+		{
+			virtual const char *what() const throw();
+		}
 
 };
 
