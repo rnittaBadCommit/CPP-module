@@ -24,15 +24,15 @@ int main()
 		b2.incrementGrade();
 		b2.executeForm(f1);
 
-
-		std::cout << std::endl << std::endl;
-
-		std::cout << "sudo chmod 000 home_shrubbery" << std::endl;
-		system("sudo chmod 000 home_shrubbery");
-		b2.executeForm(f1);
-		std::cout << "sudo chmod 777 home_shrubbery" << std::endl;
-		system("sudo chmod 777 home_shrubbery");
-		std::cout << std::endl;
+		#if TEST
+			std::cout << std::endl << std::endl;
+			std::cout << "<<  sudo chmod 000 home_shrubbery  >>" << std::endl;
+			system("sudo chmod 000 home_shrubbery");
+			b2.executeForm(f1);
+			std::cout << "<<  sudo chmod 777 home_shrubbery  >>" << std::endl;
+			system("sudo chmod 777 home_shrubbery");
+			std::cout << std::endl;
+		#endif
 	}
 	catch (const std::exception &e)
 	{
@@ -53,6 +53,11 @@ int main()
 		b1.signForm(f1);
 		b2.executeForm(f1);
 		b1.executeForm(f1);
+		#if TEST
+			std::cout << std::endl;
+			std::cout << "<<  cat home_shrubbery  >>" << std::endl;
+			system("cat home_shrubbery");
+		#endif
 	}
 	catch (const std::exception &e)
 	{
