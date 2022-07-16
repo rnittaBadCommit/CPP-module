@@ -216,14 +216,14 @@ void	TypeConversion::displayFloat(const double f_value)
 	std::cout << "float: ";
 
 	if (ft::is_valid_range_float(f_value))
-		std::cout << std::setprecision(1) << static_cast<float> (f_value) << 'f' << std::endl;
+		std::cout << std::fixed << std::setprecision(1) << static_cast<float> (f_value) << 'f' << std::endl;
 	else
 		std::cout << MESSAGE_IMPOSSIBLE << std::endl;
 }
 
 void	TypeConversion::displayDouble(const double d_value)
 {
-	std::cout << "double: " << std::setprecision(1) << d_value << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(1) << d_value << std::endl;
 }
 
 const char	*TypeConversion::InvalidInputException::what() const throw()
