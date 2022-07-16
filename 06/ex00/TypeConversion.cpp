@@ -98,7 +98,7 @@ void	TypeConversion::displayFloat()
 		std::cout << str_data_ << std::endl;
 		return ;
 	}
-	else if (str_data_ == "-inff", str_data_ == "+inff" , str_data_ == "nan")
+	else if (str_data_ == "-inff" || str_data_ == "+inff" || str_data_ == "nan")
 	{
 		std::cout << str_data_ << "f" << std::endl;
 		return;
