@@ -50,10 +50,10 @@ void	TypeConversion::display()
 		caseDouble();
 		break;
 	
-	case TYPE_INF_NAN;
+	case TYPE_INF_NAN:
 		caseINF_NAN();
 		break;
-		
+
 	default:
 		break;
 	}
