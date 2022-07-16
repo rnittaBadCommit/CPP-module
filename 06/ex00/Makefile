@@ -33,7 +33,7 @@ test: fclean set_test $(NAME)
 	@echo "TEST START"
 	@echo
 	@echo
-	@valgrind ./$(NAME)
+	@sh -x test.sh
 
 set_test:
 	$(eval TEST := 1)
