@@ -8,8 +8,13 @@ namespace ft
 		for (i = 0; str[i] == ' '; i++)
 			;
 		int	sign = 1;
-		if (str[i] == '-')
+		if (str[i] == '+')
+			i++;
+		else if (str[i] == '-')
+		{
 			sign = -1;
+			i++;
+		}
 		int	ret = 0;
 		while ('0' <= str[i] && str[i] <= '9')
 		{
