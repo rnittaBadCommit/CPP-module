@@ -2,10 +2,9 @@
 # define TYPE_CONVERSION_HPP
 
 # include <iostream>
+# include <iomanip>
 # include <sstream>
 # include <limits>
-#include <wchar.h>
-#include <math.h> 
 #include "utils/ft_utils.hpp"
 
 class TypeConversion
