@@ -55,7 +55,6 @@ void	TypeConversion::display()
 	}
 }
 
-
 //other constructors
 TypeConversion::TypeConversion(const std::string s_input_value)
 : s_input_value_(s_input_value)

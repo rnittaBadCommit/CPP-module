@@ -29,4 +29,3 @@ const char *ft::Exception::what() const throw()
 }
 	
 } // namespace ft
-

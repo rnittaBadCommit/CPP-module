@@ -4,7 +4,7 @@ namespace ft
 {
 	bool	is_valid_range_int(const long int l)
 	{
-		if (INT_MIN <= l && l <= INT_MAX)
+		if (std::numeric_limits<int>::min() <= l && l <= std::numeric_limits<int>::max())
 			return (true);
 		else
 			return (false);
@@ -12,7 +12,7 @@ namespace ft
 
 	bool	is_valid_range_int(const unsigned long int l)
 	{
-		if (l <= UINT_MAX)
+		if (l <= std::numeric_limits<unsigned int>::max())
 			return (true);
 		else
 			return (false);
