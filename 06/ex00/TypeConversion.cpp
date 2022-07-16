@@ -210,7 +210,7 @@ void	TypeConversion::displayFloat(const double f_value)
 	std::cout << "float: ";
 
 	if (ft::is_valid_range_float(f_value))
-		std::cout << static_cast<float> (f_value) << std::endl;
+		std::cout << static_cast<float> (f_value) << 'f' << std::endl;
 	else
 		std::cout << MESSAGE_IMPOSSIBLE << std::endl;
 }
