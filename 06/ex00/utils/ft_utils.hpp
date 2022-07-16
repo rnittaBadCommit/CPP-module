@@ -17,6 +17,7 @@ enum e_err
 	INVALID_NUM_ARG,
 	EMPTY_FILE_NAME,
 	CANT_OPEN_FILE,
+	OVER_FLOW,
 	ERR_LAST
 };
 
@@ -25,6 +26,9 @@ namespace ft
 	//str
 	int	stoi(std::string str);
 	bool	is_number(const std::string str);
+	bool	is_int(const std::string str);
+	bool	is_float(const std::string str);
+	bool	is_double(const std::string str);
 	void	replace(std::string &content, std::string s1, std::string s2);
 
 	//file
@@ -43,6 +47,7 @@ namespace ft
 		public:
 			Exception(const e_err err);
 			const char *what() const throw();
+			e_err	getErr();
 
 		private:
 			e_err	err_;

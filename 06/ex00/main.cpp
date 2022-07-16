@@ -7,7 +7,13 @@ int main(int argc, char **argv)
 		std::cout << "invalid number of args" << std::endl;
 		return (1);
 	}
-	TypeConversion	TC(argv[1]);
-	TC.displayChar();
-	TC.displayInt();
+	try
+	{
+		TypeConversion	TC(argv[1]);
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+		return (1);
+	}
 }

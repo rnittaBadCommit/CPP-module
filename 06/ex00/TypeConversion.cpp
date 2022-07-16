@@ -4,15 +4,13 @@ const std::string TypeConversion::MESSAGE_IMPOSSIBLE = "impossible";
 const std::string TypeConversion::MESSAGE_NON_DISPLAYABLE = "Non displayable";
 
 TypeConversion::TypeConversion()
-: str_data_(""), is_number_(false)//, type_(TYPE_NONE)
 {
-
+	throw InvalidInputException();
 }
 
 TypeConversion::TypeConversion(const TypeConversion &other)
-: str_data_(other.str_data_), is_number_(other.is_number_)
 {
-
+	*this = other;
 }
 
 TypeConversion::~TypeConversion()
@@ -22,108 +20,196 @@ TypeConversion::~TypeConversion()
 
 TypeConversion	&TypeConversion::operator=(const TypeConversion &other)
 {
-	str_data_ = other.str_data_;
-	is_number_ = other.is_number_;
-	// type_ = other.type_;
+	s_input_value_ = other.s_input_value_;
+	type_ = other.type_;
+	c_value_ = other.c_value_;
+	i_value_ = other.i_value_;
+	f_value_ = other.f_value_;
+	d_value_ = other.d_value_;
 
 	return (*this);
 }
 
+void	TypeConversion::display()
+{
+	switch (type_)
+	{
+	case TYPE_CHAR:
+		caseChar();
+		break;
+	
+	case TYPE_INT:
+		caseInt();
+		break;
+	
+	case TYPE_FLOAT:
+		caseFloat();
+		break;
+	
+	case TYPE_DOUBLE:
+		caseDouble();
+		break;
+	
+	default:
+		break;
+	}
+}
+
 
 //other constructors
-TypeConversion::TypeConversion(const std::string str_data)
-: str_data_(str_data), is_number_(ft::is_number(str_data))//, type_(strData_to_type(str_data))
+TypeConversion::TypeConversion(const std::string s_input_value)
+: s_input_value_(s_input_value)
 {
+	set_type_(s_input_value);
+}
 
+void		TypeConversion::set_type_(const std::string s_input_value)
+{
+	{
+		std::string		str_inf_nan[] = {"+inf", "+inff", "-inf", "-inff", "nan", "nanf", ""};
+		for (size_t i = 0; str_inf_nan[i] != ""; i++)
+			if (s_input_value == str_inf_nan[i])
+			{
+				type_ = TYPE_INF_NAN;
+				s_input_value_ = str_inf_nan[i / 2 * 2];
+				return ;
+			}
+	}
+
+	size_t		len_input_value = s_input_value.length();
+
+	if (len_input_value == 1 && !std::isdigit(s_input_value[0]))
+		type_ = TYPE_CHAR;
+	else if (ft::is_int(s_input_value))
+		type_ = TYPE_INT;
+	else if (ft::is_float(s_input_value))
+		type_ = TYPE_FLOAT;
+	else if (ft::is_double(s_input_value))
+		type_ = TYPE_DOUBLE;
+	else
+		throw InvalidInputException();
+}
+
+//case <TYPE>
+void	TypeConversion::caseChar()
+{
+	c_value_ = s_input_value_[0];
+	i_value_ = static_cast<int> (c_value_);
+	f_value_ = static_cast<float> (c_value_);
+	d_value_ = static_cast<double> (c_value_);
+
+	displayAllType();
+}
+
+void	TypeConversion::caseInt()
+{
+	try
+	{
+		i_value_ = ft::stoi(s_input_value_);
+		c_value_ = static_cast<int> (i_value_);
+		f_value_ = static_cast<float> (i_value_);
+		d_value_ = static_cast<double> (i_value_);
+		displayAllType();
+	}
+	catch (const std::exception &e)
+	{
+		caseOverFlow();
+	}
+}
+
+void	TypeConversion::caseFloat()
+{
+	std::istringstream iss(s_input_value_);
+
+	iss >> f_value_;
+	if (f_value_ < std::numeric_limits<float>::lowest() || std::numeric_limits<float>::max() < f_value_)
+		caseOverFlow();
+
+	c_value_ = static_cast<int> (f_value_);
+	i_value_ = static_cast<long> (f_value_);
+	d_value_ = static_cast<double> (f_value_);
+
+	displayAllType();
+}
+
+void	TypeConversion::caseDouble()
+{
+	std::istringstream iss(s_input_value_);
+
+	iss >> d_value_;
+	if (d_value_ < std::numeric_limits<double>::lowest() || std::numeric_limits<double>::max() < d_value_)
+		caseOverFlow();
+
+	c_value_ = static_cast<int> (d_value_);
+	i_value_ = static_cast<long> (d_value_);
+	f_value_ = static_cast<double> (d_value_);
+
+	displayAllType();
+}
+
+void	TypeConversion::caseOverFlow()
+{
+	std::cout << "char: " << MESSAGE_IMPOSSIBLE << std::endl;
+	std::cout << "int: " << MESSAGE_IMPOSSIBLE << std::endl;
+	std::cout << "float: " << MESSAGE_IMPOSSIBLE << std::endl;
+	std::cout << "double: " << MESSAGE_IMPOSSIBLE << std::endl;
+}
+
+void	TypeConversion::caseINF_NAN()
+{
+	std::cout << "char: " << MESSAGE_IMPOSSIBLE << std::endl;
+	std::cout << "int: " << MESSAGE_IMPOSSIBLE << std::endl;
+	std::cout << "float: " << s_input_value_ + "f" << std::endl;
+	std::cout << "double: " << s_input_value_ << std::endl;
 }
 
 
-//move
+//display
 void	TypeConversion::displayAllType()
 {
-	displayChar();
+	displayChar(c_value_);
+	displayInt(i_value_);
+	displayFloat(f_value_);
+	displayDouble(d_value_);
 }
 
-void	TypeConversion::displayChar()
+void	TypeConversion::displayChar(const int c_value)
 {
 	std::cout << "char: ";
 
-	if (is_number_)
-	{
-		std::istringstream	iss(str_data_);
-		int					data;
-
-		iss >> data;
-		if (ft::is_valid_range_char(data))
-		{
-			if (isprint(data))
-				std::cout << static_cast<char> (data) << std::endl;
-			else
-				std::cout << MESSAGE_NON_DISPLAYABLE << std::endl;
-		}
-		else
-			std::cout << MESSAGE_IMPOSSIBLE << std::endl;
-	}
-	else
+	if (c_value < std::numeric_limits<char>::min() || std::numeric_limits<char>::max() < c_value)
 		std::cout << MESSAGE_IMPOSSIBLE << std::endl;
+	else if (std::isprint(c_value))
+		std::cout << "\'" << c_value << "\'" << std::endl;
+	else
+		std::cout << MESSAGE_NON_DISPLAYABLE << std::endl;
 }
 
-void	TypeConversion::displayInt()
+void	TypeConversion::displayInt(const long i_value)
 {
 	std::cout << "int: ";
-
-	if (is_number_)
-	{
-		std::istringstream	iss(str_data_);
-		long int			data;
-
-		iss >> data;
-		if (ft::is_valid_range_int(data))
-		{
-			std::cout << static_cast<int> (data) << std::endl;
-		}
-		else
-			std::cout << MESSAGE_IMPOSSIBLE << std::endl;
-	}
+	if (std::numeric_limits<int>::min() <= i_value && i_value <= std::numeric_limits<int>::max())
+		std::cout << i_value << std::endl;
 	else
 		std::cout << MESSAGE_IMPOSSIBLE << std::endl;
 }
 
-void	TypeConversion::displayFloat()
+void	TypeConversion::displayFloat(const double f_value)
 {
-	std::cout << "int: ";
+	std::cout << "float: ";
 
-	if (str_data_ == "-inff" || str_data_ == "+inff" || str_data_ == "nanf")
-	{
-		std::cout << str_data_ << std::endl;
-		return ;
-	}
-	else if (str_data_ == "-inff" || str_data_ == "+inff" || str_data_ == "nan")
-	{
-		std::cout << str_data_ << "f" << std::endl;
-		return;
-	}
-
-	if (is_number_)
-	{
-		std::istringstream	iss(str_data_);
-		float			data;
-
-		iss >> data;
-		if (std::numeric_limits<float>::lowest() <= data && data <= std::numeric_limits<float>::max())
-		{
-			std::cout << static_cast<int> (data) << std::endl;
-		}
-		else
-			std::cout << MESSAGE_IMPOSSIBLE << std::endl;
-	}
+	if (std::numeric_limits<float>::lowest() <= f_value && f_value <= std::numeric_limits<float>::max())
+		std::cout << f_value << std::endl;
 	else
 		std::cout << MESSAGE_IMPOSSIBLE << std::endl;
 }
 
-//private
-// int		TypeConversion::strData_to_type(const std::string str_data)
-// {
-// 	if ()
-// }
+void	TypeConversion::displayDouble(const double d_value)
+{
+	std::cout << "double: " << d_value << std::endl;
+}
 
+const char	*TypeConversion::InvalidInputException::what() const throw()
+{
+	return ("Invalid Input");
+}

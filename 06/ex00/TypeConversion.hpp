@@ -17,35 +17,54 @@ class TypeConversion
 		TypeConversion	&operator=(const TypeConversion &other);
 
 		//other constructors
-		TypeConversion(const std::string str_data);
+		TypeConversion(const std::string s_input_value);
 
-		//move
-		void	displayAllType();
-		void	displayChar();
-		void	displayInt();
-		void	displayFloat();
-		void	displayDouble();
+		void	display();
 
 	private:
-		std::string		str_data_;
-		bool			is_number_;
+		std::string		s_input_value_;
+		int		type_;
+		int		c_value_;
+		long	i_value_;
+		double	f_value_;
+		double	d_value_;
+
 		static const std::string	MESSAGE_IMPOSSIBLE;
 		static const std::string	MESSAGE_NON_DISPLAYABLE;
-		// int				type_;
 
-		// enum
-		// {
-		// 	TYPE_NONE,
-		// 	TYPE_CHAR,
-		// 	TYPE_INT,
-		// 	TYPE_FLOAT,
-		// 	TYPE_DOUBLE,
-		// 	TYPE_LAST,
-		// };
+		void		set_type_(const std::string s_input_value);
 
-		// int		strData_to_type(const std::string str_data);
+		//case <TYPE>
+		void	caseChar();
+		void	caseInt();
+		void	caseFloat();
+		void	caseDouble();
+		void	caseOverFlow();
+		void	caseINF_NAN();
 
-		
+		//display
+		void	displayAllType();
+		void	displayChar(const int c_value);
+		void	displayInt(const long i_value);
+		void	displayFloat(const double f_value);
+		void	displayDouble(const double d_value);
+
+		enum
+		{
+			TYPE_NONE,
+			TYPE_CHAR,
+			TYPE_INT,
+			TYPE_FLOAT,
+			TYPE_DOUBLE,
+			TYPE_INF_NAN,
+			TYPE_INVALID,
+			TYPE_LAST
+		};
+
+		class InvalidInputException : public std::exception
+		{
+			const char *what() const throw();
+		};
 
 };
 
