@@ -130,7 +130,7 @@ void	TypeConversion::caseFloat()
 	std::istringstream iss(s_input_value_);
 
 	iss >> f_value_;
-	if (ft::is_valid_range_float(f_value_))
+	if (!ft::is_valid_range_float(f_value_))
 	{
 		caseOverFlow();
 		return ;
@@ -215,7 +215,7 @@ void	TypeConversion::displayFloat(const double f_value)
 {
 	std::cout << "float: ";
 
-	if (ft::is_valid_range_float(f_value))
+	if (!ft::is_valid_range_float(f_value))
 		std::cout << static_cast<float> (f_value) << 'f' << std::endl;
 	else
 		std::cout << MESSAGE_IMPOSSIBLE << std::endl;
