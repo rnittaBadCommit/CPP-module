@@ -24,7 +24,7 @@ enum e_err
 namespace ft
 {
 	//str
-	int	stoi(const std::string str);
+	int		stoi(const std::string str);
 	bool	is_number(const std::string str);
 	bool	is_int(const std::string str);
 	bool	is_float(const std::string str);
