@@ -10,6 +10,7 @@ int main(int argc, char **argv)
 	try
 	{
 		TypeConversion	TC(argv[1]);
+		TC.display();
 	}
 	catch (const std::exception &e)
 	{
