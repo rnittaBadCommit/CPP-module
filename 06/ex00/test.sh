@@ -2,6 +2,9 @@
 make
 
 ./convert 100
+./convert 100.0f
+./convert 100f
+./convert 100.0
 
 ./convert 0
 ./convert 0f
