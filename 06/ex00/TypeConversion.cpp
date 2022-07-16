@@ -82,7 +82,10 @@ void		TypeConversion::set_type_(const std::string s_input_value)
 	else if (ft::is_int(s_input_value))
 		type_ = TYPE_INT;
 	else if (ft::is_float(s_input_value))
+	{
+		s_input_value_[s_input_value_.length() - 1] = '\0';
 		type_ = TYPE_FLOAT;
+	}
 	else if (ft::is_double(s_input_value))
 		type_ = TYPE_DOUBLE;
 	else
@@ -122,7 +125,10 @@ void	TypeConversion::caseFloat()
 
 	iss >> f_value_;
 	if (ft::is_valid_range_float(f_value_))
+	{
 		caseOverFlow();
+		return ;
+	}
 
 	c_value_ = static_cast<int> (f_value_);
 	i_value_ = static_cast<long> (f_value_);
@@ -137,7 +143,10 @@ void	TypeConversion::caseDouble()
 
 	iss >> d_value_;
 	if (d_value_ < std::numeric_limits<double>::lowest() || std::numeric_limits<double>::max() < d_value_)
+	{
 		caseOverFlow();
+		return ;
+	}
 
 	c_value_ = static_cast<int> (d_value_);
 	i_value_ = static_cast<long> (d_value_);
