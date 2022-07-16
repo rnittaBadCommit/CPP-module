@@ -41,6 +41,7 @@ namespace ft
 	bool	is_valid_range_char(const unsigned int ui);
 	bool	is_valid_range_int(const long int ul);
 	bool	is_valid_range_int(const unsigned long int ul);
+	bool	is_valid_range_float(const double d);
 
 	class Exception : public std::exception
 	{

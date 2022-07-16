@@ -121,7 +121,7 @@ void	TypeConversion::caseFloat()
 	std::istringstream iss(s_input_value_);
 
 	iss >> f_value_;
-	if (f_value_ < std::numeric_limits<float>::lowest() || std::numeric_limits<float>::max() < f_value_)
+	if (ft::is_valid_range_float(f_value_))
 		caseOverFlow();
 
 	c_value_ = static_cast<int> (f_value_);
@@ -176,7 +176,7 @@ void	TypeConversion::displayChar(const int c_value)
 {
 	std::cout << "char: ";
 
-	if (c_value < std::numeric_limits<char>::min() || std::numeric_limits<char>::max() < c_value)
+	if (ft::is_valid_range_char(c_value))
 		std::cout << MESSAGE_IMPOSSIBLE << std::endl;
 	else if (std::isprint(c_value))
 		std::cout << "\'" << c_value << "\'" << std::endl;
@@ -187,7 +187,7 @@ void	TypeConversion::displayChar(const int c_value)
 void	TypeConversion::displayInt(const long i_value)
 {
 	std::cout << "int: ";
-	if (std::numeric_limits<int>::min() <= i_value && i_value <= std::numeric_limits<int>::max())
+	if (ft::is_valid_range_int(i_value))
 		std::cout << i_value << std::endl;
 	else
 		std::cout << MESSAGE_IMPOSSIBLE << std::endl;
@@ -197,7 +197,7 @@ void	TypeConversion::displayFloat(const double f_value)
 {
 	std::cout << "float: ";
 
-	if (std::numeric_limits<float>::lowest() <= f_value && f_value <= std::numeric_limits<float>::max())
+	if (ft::is_valid_range_float(f_value))
 		std::cout << f_value << std::endl;
 	else
 		std::cout << MESSAGE_IMPOSSIBLE << std::endl;
