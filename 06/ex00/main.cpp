@@ -11,6 +11,9 @@ int main(int argc, char **argv)
 	{
 		TypeConversion	TC(argv[1]);
 		TC.display();
+		#if TEST
+			std::cout << std::endl;
+		#endif
 	}
 	catch (const std::exception &e)
 	{
