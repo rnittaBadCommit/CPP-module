@@ -2,7 +2,7 @@
 
 namespace ft
 {
-	int	stoi(std::string str)
+	int	stoi(const std::string str)
 	{
 		int	i;
 		for (i = 0; str[i] == ' '; i++)
