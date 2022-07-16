@@ -179,7 +179,7 @@ void	TypeConversion::displayChar(const int c_value)
 	if (!ft::is_valid_range_char(c_value))
 		std::cout << MESSAGE_IMPOSSIBLE << std::endl;
 	else if (std::isprint(c_value))
-		std::cout << "\'" << c_value << "\'" << std::endl;
+		std::cout << "\'" << static_cast<char> (c_value) << "\'" << std::endl;
 	else
 		std::cout << MESSAGE_NON_DISPLAYABLE << std::endl;
 }
@@ -188,7 +188,7 @@ void	TypeConversion::displayInt(const long i_value)
 {
 	std::cout << "int: ";
 	if (ft::is_valid_range_int(i_value))
-		std::cout << i_value << std::endl;
+		std::cout << static_cast<int> (i_value) << std::endl;
 	else
 		std::cout << MESSAGE_IMPOSSIBLE << std::endl;
 }
@@ -198,7 +198,7 @@ void	TypeConversion::displayFloat(const double f_value)
 	std::cout << "float: ";
 
 	if (ft::is_valid_range_float(f_value))
-		std::cout << f_value << std::endl;
+		std::cout << static_cast<float> (f_value) << std::endl;
 	else
 		std::cout << MESSAGE_IMPOSSIBLE << std::endl;
 }
