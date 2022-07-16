@@ -50,6 +50,10 @@ void	TypeConversion::display()
 		caseDouble();
 		break;
 	
+	case TYPE_INF_NAN;
+		caseINF_NAN();
+		break;
+		
 	default:
 		break;
 	}
@@ -208,7 +212,7 @@ void	TypeConversion::displayInt(const long i_value)
 void	TypeConversion::displayFloat(const double f_value)
 {
 	std::cout << "float: ";
-
+g
 	if (ft::is_valid_range_float(f_value))
 		std::cout << static_cast<float> (f_value) << 'f' << std::endl;
 	else
