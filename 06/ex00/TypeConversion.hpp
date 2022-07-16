@@ -3,6 +3,9 @@
 
 # include <iostream>
 # include <sstream>
+# include <limits>
+#include <wchar.h>
+#include <math.h> 
 #include "utils/ft_utils.hpp"
 
 class TypeConversion

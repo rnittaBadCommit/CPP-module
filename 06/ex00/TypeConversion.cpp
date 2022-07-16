@@ -89,6 +89,38 @@ void	TypeConversion::displayInt()
 		std::cout << MESSAGE_IMPOSSIBLE << std::endl;
 }
 
+void	TypeConversion::displayFloat()
+{
+	std::cout << "int: ";
+
+	if (str_data_ == "-inff" || str_data_ == "+inff" || str_data_ == "nanf")
+	{
+		std::cout << str_data_ << std::endl;
+		return ;
+	}
+	else if (str_data_ == "-inff", str_data_ == "+inff" , str_data_ == "nan")
+	{
+		std::cout << str_data_ << "f" << std::endl;
+		return;
+	}
+
+	if (is_number_)
+	{
+		std::istringstream	iss(str_data_);
+		float			data;
+
+		iss >> data;
+		if (std::numeric_limits<float>::lowest() <= data && data <= std::numeric_limits<float>::max())
+		{
+			std::cout << static_cast<int> (data) << std::endl;
+		}
+		else
+			std::cout << MESSAGE_IMPOSSIBLE << std::endl;
+	}
+	else
+		std::cout << MESSAGE_IMPOSSIBLE << std::endl;
+}
+
 //private
 // int		TypeConversion::strData_to_type(const std::string str_data)
 // {
