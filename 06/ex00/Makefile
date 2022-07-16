@@ -2,7 +2,8 @@ NAME=convert
 
 UTILS=ft_is_valid_range_char.cpp ft_is_valid_range_int.cpp ft_is_valid_range_float.cpp \
 		ft_is_int.cpp ft_is_float.cpp ft_is_double.cpp\
-		ft_stoi.cpp
+		ft_stoi.cpp\
+		ft_Exception.cpp
 SRCS=main.cpp TypeConversion.cpp $(addprefix utils/,$(UTILS))
 OBJS=$(SRCS:.cpp=.o)
 DEPS=$(SRCS:.cpp=.d)
