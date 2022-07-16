@@ -68,6 +68,8 @@ TypeConversion::TypeConversion(const std::string s_input_value)
 
 void		TypeConversion::set_type_(const std::string s_input_value)
 {
+	if (s_input_value == "")
+		throw InvalidInputException();
 	{
 		std::string		str_inf_nan[] = {"+inf", "+inff", "-inf", "-inff", "nan", "nanf", ""};
 		for (size_t i = 0; str_inf_nan[i] != ""; i++)
