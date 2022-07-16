@@ -179,7 +179,10 @@ void	TypeConversion::displayChar(const int c_value)
 	if (!ft::is_valid_range_char(c_value))
 		std::cout << MESSAGE_IMPOSSIBLE << std::endl;
 	else if (std::isprint(c_value))
-		std::cout << "\'" << static_cast<char> (c_value) << "\'" << std::endl;
+	{
+		char	c = static_cast<char> (c_value);
+		std::cout << "\'" << c << "\'" << std::endl;
+	}
 	else
 		std::cout << MESSAGE_NON_DISPLAYABLE << std::endl;
 }
