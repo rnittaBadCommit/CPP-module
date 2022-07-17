@@ -15,10 +15,10 @@ namespace ft
 			sign = -1;
 			i++;
 		}
-		int	ret = 0;
+		unsigned int	ret = 0;
 		while ('0' <= str[i] && str[i] <= '9')
 		{
-			if (ret > (std::numeric_limits<int>::max() + (sign == -1) - str[i] - '0') / 10)
+			if (ret > (std::numeric_limits<int>::max() + (sign == -1) - str[i] + '0') / 10)
 				throw Exception(OVER_FLOW);
 			ret = ret * 10 + str[i] - '0';
 			i++;
