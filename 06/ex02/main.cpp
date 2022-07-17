@@ -48,7 +48,7 @@ void	identify(Base* p)
 		std::cout << "Error: none of Type A, B, C..." << std::endl;
 }
 
-void	idendify(Base& p)
+void	identify(Base& p)
 {
 	std::cout << "type: ";
 
@@ -83,13 +83,14 @@ int	main()
 {
 	Base	*base = NULL;
 	identify(base);
-	
+
 	srand(time(NULL));
 	for (int i = 0; i < 10; i++)
 	{
 		Base *base = generate();
+		Base &ref = *base;
 		identify(base);
-		identify(*base);
+		identify(ref);
 		delete base;
 	}
 }
