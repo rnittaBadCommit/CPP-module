@@ -24,8 +24,8 @@ class Array
 		std::size_t	size() const;
 
 	private:
-		T*		array_;
-		std::size_t	size_;
+		T*				array_;
+		std::size_t		size_;
 };
 
 #include "Array.tpp"
