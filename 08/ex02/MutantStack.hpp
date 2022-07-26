@@ -13,7 +13,7 @@ class MutantStack : public std::stack<T, Container> {
 							*this = other;
 						}
 		virtual			~MutantStack() {}
-		MutantStack& 	&operator=(const MutantStack &other)
+		MutantStack 	&operator=(const MutantStack &other)
 						{
 							if (this == &other)
 								return *this;
